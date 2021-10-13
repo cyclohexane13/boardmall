@@ -1,0 +1,51 @@
+body article {
+	min-height: 840px;
+}
+
+header ul li  {
+	padding: 10px;
+	font-size: 20px;
+}
+
+#list-group li {
+	padding: 0;
+}
+
+#list-group li a {
+	width:200px;
+	height:70px;
+	text-align:center;
+	line-height:50px;
+}
+
+/* 장원선 */
+/* 공지사항 notice */
+
+#notice li {
+   width: 280px;
+   height: 280px;
+}
+
+#notice li dl{
+   display:table-cell;
+   width: 280px;
+   height: 280px;
+   color:#fff;
+   line-height:26px;
+   vertical-align:middle;
+   transition: .4s all;
+   opacity: 1.0;
+   background-color: rgba(66,66,66,0.5);
+}
+#notice li dl:hover{
+   opacity: 0; 
+}
+
+#notice_bg {
+   background-size : 280px;
+}
+
+#notice_text {
+   position:absolute; 
+   z-index:2;
+}
