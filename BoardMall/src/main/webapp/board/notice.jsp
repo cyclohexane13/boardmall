@@ -2,23 +2,33 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
+<div class="clear"></div>
 
 <!-- 공지사항 화면 구성 -->
 <main>
  <div class="container">
-	<div id="topmenu">
-		<ul class="nav col-12 col-md-7 mb-3 mt-5 mb-md-0">
-			<li class="list-group-item list-group-item-action list-group-item-dark" style="width: 250px; height: 80px; text-align: center; cursor: pointer;" onclick="location.href='#'">
-			 <p class="text-dark" style="position: relative; top:15px;">새 소식</p>
-			 </li>
-			
-		</ul>
-	</div>
-	<div id="notice_head" class="border col-md-12 p-5 mb-5">
-				<h2 class="p-4 text-info">News</h2>
-				<p class="px-4 pb-4">공지사항 입니다.</p>
+ 
+		<div id="top_menu">
+			<div id="top_title">Notice</div>
+			<div id="top_content">
+				<div id="top_box" class="box_selected">
+					<div>
+						<img src="resources/images/notice_icon.png" width="60" height="60">
+					</div>
+					<div>공지사항</div>
+					<div>공지사항을 확인하세요.</div>
+				</div>
+				<div id="top_box2">
+					<div>
+						<img src="resources/images/event_icon.png" width="60" height="60">
+					</div>
+					<div>이벤트</div>
+					<div>이벤트 정보를 확인하세요.</div>
+				</div>
 			</div>
-     
+		</div>
+
+		<!-- 검색 -->
      <div class="col-md-12 p-3 mt-3">
      	<div  style="float: right;">
      		<select class="mr-3" style="width : 140px; height : 48px;">

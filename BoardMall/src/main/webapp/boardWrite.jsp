@@ -9,13 +9,13 @@
 
 			<!-- 글작성 -->
 
-			<div id="boardWrite" class="nav justify-content-center mt-5" style="display:block;">
+			<div id="boardWrite" class="nav justify-content-center mt-5 w-100" style="display:block;">
 				<h3>게시글 작성</h3>
 				<form class="border p-5 my-5 w-75">
-					<table class="table project-table table-centered table-nowrap mt-4 w-auto" >
+					<table class="table project-table table-centered table-nowrap mt-4 w-100" >
 						<tr>
-							<th class="table-secondary col-2">카테고리</th>
-							<td class="input-select col-9">
+							<th class="table-secondary">카테고리</th>
+							<td class="input-select">
 								<select data-trigger="" name="choices-single-defaul">
 									<option>자유게시판</option>
 									<option>리뷰게시판</option>
@@ -23,16 +23,24 @@
 								</select>
 							</td>
 						</tr>	
+						<!-- 리뷰/질문게시판 선택시에만 나타나도록. 팝업창 띄우기: searchGame.jsp -->
+						<tr>
+							<th class="table-secondary col-2">게임</th>
+							<td class="input-select col-9">
+								<button class="w-auto btn btn-sm btn-light border" onclick="">게임 선택하기</button>
+							</td>
+						</tr>
+						<!--  -->
 						<tr>
 							<th class="table-secondary col-2">제목</th>
 							<td class="input-select col-9">
-								<input type="text" name="title" size="80">
+								<input type="text" name="title" class="w-100">
 							</td>
 						</tr>	
 						<tr>
 							<th class="table-secondary col-2">내용</th>
 							<td class="input-select col-9">
-								<textarea cols="82" rows="20" name="content"></textarea>
+								<textarea class="w-100" rows="20" name="content"></textarea>
 							</td>
 						</tr>	
 						<tr>

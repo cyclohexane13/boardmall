@@ -2,36 +2,45 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-	<div class="clear"></div> <!-- css : .clear{clear:both;} -->
+	<div class="clear"></div> 
 	
 	<article>
 		<div class="container">
 		
 			<!-- 공통부분 -->
-			<div id="list-group">
-				<dl>
-					<dd>
-						<ul class="nav col-12 col-md-8 mt-5 mb-md-0">
-							<li><a href="#" class="list-group-item list-group-item-action">전체게시판</a></li><!-- ajax로 addClass  -->
-							<li class="current"><a href="#" class="list-group-item list-group-item-action disabled bg-secondary text-white">자유게시판</a></li> <!-- category : free -->
-							<li><a href="#" class="list-group-item list-group-item-action">리뷰게시판</a></li> <!-- category : review -->
-							<li><a href="#" class="list-group-item list-group-item-action">질문게시판</a></li> <!-- category : ask -->
-						</ul>	
-					</dd>
-				</dl>
-			</div>
-			
-			<div id="community" class="border col-md-12 p-5 mb-5">
-				<h2 class="p-4 text-info">Community</h2>
-				<p class="px-4 pb-4">다른 회원들과 자유롭게 소통하세요.</p>
+			<div id="top_menu">
+				<div id="top_title">Community</div>
+				<div id="top_content">
+					<div id="top_box" class="box_selected"> <!-- 게시판 선택되면 class 추가되도록.. -->
+						<div>
+							<img src="resources/images/community_icon.png" width="60" height="60">
+						</div>
+						<div>자유게시판</div>  
+						<div>자유롭게 소통해보세요.</div>
+					</div>
+					<div id="top_box2">
+						<div>
+							<img src="resources/images/review_icon.png" width="60" height="60">
+						</div>
+						<div>리뷰게시판</div>
+						<div>게임 리뷰를 확인해보세요.</div>
+					</div>
+					<div id="top_box3">
+						<div>
+							<img src="resources/images/question_icon.png" width="60" height="60">
+						</div>
+						<div>질문게시판</div>
+						<div>게임에 대한 질문을 해보세요.</div>
+					</div>
+				</div>
 			</div>
 			
 			<!-- 글목록 -->
 			<div id="boardList" >
 				<!-- 검색 -->
-				<div class="nav col-12 justify-content-end">
+				<div id="boardListSearch" class="nav col-12 justify-content-end">
 					<form>
-						<div class="inner-form row" style="display:inline-flex;">
+						<div id="innerSearch" class="inner-form row">
 							<div class="input-field first-wrap col-3">
 								<div class="input-select">
 									<select data-trigger="" name="choices-single-defaul">
@@ -50,7 +59,7 @@
 						</div>
 					</form>
 				</div>
-				<table class="table project-table table-centered table-nowrap my-5" style="border-top:2px solid gray;border-bottom:2px solid #dee2e6;">
+				<table id="boardTable" class="table project-table table-centered table-nowrap my-5">
 					<tr>
 						<td style="width: 12%">글번호(내림차순)</td>
 						<td style="width: 68%">제목</td>
