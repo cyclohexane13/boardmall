@@ -13,17 +13,17 @@
 <div class="container">
 
 <nav class="mr-4 list-group-flush" id="sub_menu">
-	<h1>마이페이지</h1>
+	<h2>마이페이지</h2>
   <ul class = "menu">
-    <li><a href="#">상품주문관리</a></li>  
+    <li style="font-size: 18px; font-weight: bold;">상품주문관리</li>  
     <li><a href="#">주문내역</a></li>  
     <li><a href="#">장바구니</a></li> 
     <li><a href="#">위시리스트</a></li> 
-    <li><a href="#">활동 관리</a></li>  
+    <li style="font-size: 18px; font-weight: bold;">활동 관리</li>  
     <li><a href="#">내가 쓴 글 보기</a></li>  
     <li><a href="#">1:1 문의</a></li>  
     <li><a href="#">나의 상품 후기</a></li>  
-    <li><a href="#">정보관리</a></li>  
+    <li style="font-size: 18px; font-weight: bold;">정보관리</li>  
     <li><a href="#">내 정보 수정</a></li>  
     <li><a href="#">회원 탈퇴</a>
     </li>  
@@ -97,7 +97,7 @@
 	</div>
 	
 	<div class="row" style="margin:0 auto;width: 900px; height : 250px; margin-top: 150px;">
-		<p style="font-size: 30px; font-weight: bold; font-family: 'notokr-medium','돋움',Dotum,sans-serif;">최근 본 상품</p>
+		<p style="font-size: 30px; font-weight: bold; font-family: 'notokr-medium','돋움',Dotum,sans-serif;">위시리스트</p>
 		<hr>
 		<ul class="nav col-12 mb-3 mt-5 mb-md-0">
 			<li class="text-center float-left m-3" onclick="location.href='#'" style="cursor: pointer;" >

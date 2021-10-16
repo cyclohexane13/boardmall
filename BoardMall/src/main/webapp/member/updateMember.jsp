@@ -45,6 +45,10 @@
 					<div class="invalid-feedback">올바른 이메일 주소를 입력하세요.</div>
 				</div>
 				<div class="mb-3">
+					<label for="userPhone">프로필 사진</label>
+					<input type="file" class="form-control" id="profile">
+				</div>
+				<div class="mb-3">
 					<label for="userNickname">닉네임</label>
 					<div class="input-group">
 						<input type="text" class="form-control" id="userNickname"

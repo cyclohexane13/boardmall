@@ -63,6 +63,10 @@
 				<hr class="mb-4">
 				<h5 class="mb-3">선택 입력 사항</h5><br>
 				<div class="mb-3">
+					<label for="userPhone">프로필 사진</label>
+					<input type="file" class="form-control" id="profile">
+				</div>
+				<div class="mb-3">
 					<label for="userPhone">휴대폰 번호</label>
 					<input type="tel" class="form-control" id="userPhone"
 						placeholder="휴대폰 번호">
