@@ -31,7 +31,7 @@
 							<img src="resources/images/no_thum.jpg" width="425" height="425">
 						</div>
 						<div id="infoBox" class="ps-3">
-							<ul>
+							<ul style="min-height:228px;width:520px;overflow:hidden;">
 								<li>
 									<em>가격</em> 89,000원
 								</li>
@@ -41,8 +41,6 @@
 								<li>
 									<em>게임시간</em> 60분~120분
 								</li>
-							</ul>
-							<ul>
 								<li>
 									<em>장르</em> 테마 집중형 게임, 튜닝 가능 게임
 								</li>
@@ -52,8 +50,35 @@
 							</ul>
 						</div>
 						<!-- 찜하기, 장바구니 담기 -->
-						<div>
-						
+						<div  class="ps-4 mt-4">
+							<form>
+								<table class="w-100 mb-3">
+									<tr>
+										<th style="width:25%;">수량</th>
+										<td>
+											<input type="button" name="minus_ea" value="-" onclick="javascript:this.form.buy_ea.value--;">
+											<!-- 0 아래로 내려가지 않도록.. -->
+											<input type="text" name="buy_ea" value="1" id="result" class="form_input" size="1" style="text-align:center;">
+											<input type="button" name="plus_ea" value="+" onclick="javascript:this.form.buy_ea.value++;">
+										</td>
+									</tr>
+								</table>			
+							</form>
+							<div class="multi_opt my-4 pe-2">
+								<div class="opt_total">
+									<span class="title">총금액</span>
+									<strong><span class="sell_prc_str_total" style="float:right;font-size:20px">30,000 원</span></strong>
+								</div>
+							</div>
+							
+							<!-- 버튼 -->
+							
+							<div class="btn w-100 my-2 p-0">
+								<span class="btn btn-outline-secondary py-3" style="width:17%"><a href="#">&#x2764</a></span>
+								<span class="btn btn-outline-secondary py-3" style="width:40%"><a href="#">장바구니</a></span>
+								<span class="btn btn-outline-secondary py-3" style="width:40%"><a href="#">바로구매</a></span>
+							</div>
+							
 						</div>
 					</div>
 				</div>

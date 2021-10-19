@@ -13,14 +13,14 @@
 </head>
 <body style="height:100%;">
 	<div id="wrap"> <!-- body 전체 wrap -->
-		<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+		<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between pb-3 mb-4 border-bottom">
 			<p style="margin: 10px 0 0 80px;">
 				<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-black text-decoration-none">
-		      		<img src="resources/images/LOGO.png" width="180" height="100" alt="BoardMall">
+		      		<img src="resources/images/LOGO.png" width="180" height="80" alt="BoardMall">
 		  		</a>
 		  	</p>	
 		
-		    <ul class="nav col-12 col-md-6 mb-2 justify-content-center mb-md-0">
+		    <ul class="nav col-12 col-md-5 mb-2 justify-content-center mb-md-0">
 				<li><a href="#" class="nav-link px-2 link-dark"> 상품 </a></li>
 				<li><a href="#" class="nav-link px-2 link-dark"> 커뮤니티 </a></li>
 				<li><a href="#" class="nav-link px-2 link-dark"> 공지사항 </a></li>
@@ -43,7 +43,7 @@
 	         </div>     
 		    <!-- </form> -->
 		
-		    <div class="text-end" style="float:right;">
+		    <div class="text-end col-md-3 col-lg-2 col-sm-3" style="float:right;">
 		    	<!-- 프로필 아이콘 -->
 		        <button type="button" class="btn btn-outline-primary me-2">
 		        	<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -59,6 +59,6 @@
 		        </button>
 		      </div>
 
-			<div class="clear"></div> <!-- css : .clear{clear:both;} -->
+			<div class="clear"></div> 
 			<hr>
 		</header>

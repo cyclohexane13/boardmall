@@ -141,6 +141,7 @@ em {
 #infoBox ul li {
 	position: relative;
 	padding-left: 141px;
+	line-height: 30px;
 }
 
 #infoBox ul li em {
