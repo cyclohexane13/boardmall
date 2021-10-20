@@ -11,21 +11,21 @@
 			<div id="top_menu">
 				<div id="top_title">Community</div>
 				<div id="top_content">
-					<div id="top_box">
+					<div id="top_box" onclick="location.href='boardCategoryList.do'">
 						<div>
 							<img src="resources/images/community_icon.png" width="60" height="60">
 						</div>
 						<div>자유게시판</div>
 						<div>자유롭게 소통해보세요.</div>
 					</div>
-					<div id="top_box2">
+					<div id="top_box2" onclick="location.href='boardCategoryList.do'">
 						<div>
 							<img src="resources/images/review_icon.png" width="60" height="60">
 						</div>
 						<div>리뷰게시판</div>
 						<div>게임 리뷰를 확인해보세요.</div>
 					</div>
-					<div id="top_box3">
+					<div id="top_box3" onclick="location.href='boardCategoryList.do'">
 						<div>
 							<img src="resources/images/question_icon.png" width="60" height="60">
 						</div>

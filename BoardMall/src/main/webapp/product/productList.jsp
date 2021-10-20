@@ -425,11 +425,11 @@
 				<ul id="products" class="nav my-5 justify-content-center">
 					<li class="border px-1 m-1">
 						<div class="thum">
-							<a href="#"><img src="resources/images/LOGO.png" width="235" height="350" class="border-bottom mb-2"></a>
+							<a href="gameDetail.do"><img src="resources/images/LOGO.png" width="235" height="350" class="border-bottom mb-2"></a>
 						</div>
 						<div id="wrap">
 							<div>
-								<p><a href="#">가나다라마바사아자차카타파하가나다라마바사가나다라마바사아자차카타파하가나다라마바사</a></p>
+								<p><a href="gameDetail.do">가나다라마바사아자차카타파하가나다라마바사가나다라마바사아자차카타파하가나다라마바사</a></p>
 							</div>	
 							<table class="w-100 my-2">
 								<tr>

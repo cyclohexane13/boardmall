@@ -45,7 +45,7 @@
      
 		<ul class="nav col-12 mb-3 mt-5 mb-md-0" id="notice">
 		
-			<li class="text-center float-left m-2" onclick="location.href='#'" style="cursor: pointer;" >
+			<li class="text-center float-left m-2" onclick="location.href='noticeDetail.do'" style="cursor: pointer;" >
 			<div id="notice_bg" style="background-image: url('../resources/images/LOGO.png'); width: 280px; height: 280px;">
 			 <div id="notice_text">
 				<dl>
@@ -183,6 +183,9 @@
 		</ul>
  	</div>
  	
+ 				<div>
+					<a class="w-100 btn btn-lg btn-light" href="noticeWrite.do">공지사항 작성하기</a>
+				</div>
 
 			<div class="row">
 				<div class="col-md-3 mb-4" style="margin: 0 auto;">

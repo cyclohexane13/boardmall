@@ -32,14 +32,14 @@
      </div>
 
     <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">로그인</button>
-    <button class="w-100 btn btn-lg btn-light" type="" style="border: 1px solid black;">회원가입</button>
+    <a class="w-100 btn btn-lg btn-light" style="border: 1px solid black;" href="contract.do">회원가입</a>
   </form>
 </main>
 
 
 
 
-<section style="height:1000px;">
+<section style="height:1300px;">
 	
 </section>
 

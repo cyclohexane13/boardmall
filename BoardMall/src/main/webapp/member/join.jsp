@@ -104,7 +104,7 @@
 		<ul class="list-inline">
 			<li class="list-inline-item"><a href="#">Privacy</a></li>
 			<li class="list-inline-item"><a href="#">Terms</a></li>
-			<li class="list-inline-item"><a href="#">Support</a></li>
+			<li class="list-inline-item"><a href="support.do">Support</a></li>
 		</ul>
 	</footer>
 </div>

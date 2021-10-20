@@ -27,7 +27,7 @@
 						<tr>
 							<th class="table-secondary col-2">게임</th>
 							<td class="input-select col-9">
-								<button class="w-auto btn btn-sm btn-light border" onclick="">게임 선택하기</button>
+								<button class="w-auto btn btn-sm btn-light border" onclick="popup()">게임 선택하기</button>
 							</td>
 						</tr>
 						<!--  -->
@@ -62,8 +62,16 @@
 	</article>	
 
 
-
-
+<!-- 간단한 게임 검색 화면 띄우기 -->
+<script>
+	function popup(){
+		var url = "board/searchGame.jsp";
+		var name = "test";
+		var option = "width = 500 , height = 600, top = 100, left = 200, location = no";
+		window.open(url, name, option);
+		
+	}
+</script>
 
 
 

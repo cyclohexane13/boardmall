@@ -152,6 +152,10 @@
 					</tr>
 				</table>
 				
+				<div>
+					<a class="w-100 btn btn-lg btn-light" href="boardWrite.do">글 작성하기</a>
+				</div>
+				
 				<nav aria-label="Page navigation">
 					<ul class=" pagination justify-content-center">
 				    	<li class="page-item">
