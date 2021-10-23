@@ -15,18 +15,18 @@
 	<div id="wrap"> <!-- body 전체 wrap -->
 		<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between pb-3 mb-4 border-bottom">
 			<p style="margin: 10px 0 0 80px;">
-				<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-black text-decoration-none">
+				<a href="main.do" class="d-flex align-items-center mb-2 mb-lg-0 text-black text-decoration-none">
 		      		<img src="resources/images/LOGO.png" width="180" height="80" alt="BoardMall">
 		  		</a>
 		  	</p>	
 		
 		    <ul class="nav col-12 col-md-5 mb-2 justify-content-center mb-md-0">
-				<li><a href="#" class="nav-link px-2 link-dark"> 상품 </a></li>
-				<li><a href="#" class="nav-link px-2 link-dark"> 커뮤니티 </a></li>
-				<li><a href="#" class="nav-link px-2 link-dark"> 공지사항 </a></li>
-				<li><a href="#" class="nav-link px-2 link-dark"> 고객지원 </a></li>
-				<li><a href="#" class="nav-link px-2 link-dark"> 기타 </a></li>
-			</ul>
+                <li><a href="productList.do" class="nav-link px-2 link-dark"> 상품 </a></li>
+                <li><a href="boardList.do" class="nav-link px-2 link-dark"> 커뮤니티 </a></li>
+                <li><a href="notice.do" class="nav-link px-2 link-dark"> 공지사항 </a></li>
+                <li><a href="support.do" class="nav-link px-2 link-dark"> 고객지원 </a></li>
+                <li><a href="#" class="nav-link px-2 link-dark"> 기타 </a></li>
+            </ul>
 		
 		    <!-- <form class="col-12 col-lg-2 mb-3 mb-lg-0 me-lg-3"> -->
 		    <div class="inner-form row">

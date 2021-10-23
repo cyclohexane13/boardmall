@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="GameDAO">
+
+	<select id="getMainList" resultType="game" >
+	<![CDATA[
+		select * from (select /*+index_desc(game game_index)*/
+			ROWNUM as rnum, game.* from game 
+			where rownum<=8
+			)
+		where rnum>0
+	]]>
+	</select>	
+
+<!-- 	
+	<insert id="insertGame">
+		insert into game(seq,name,minplayer,maxplayer,image,costprice,salesprice,profit,discount,playtime)
+		values(game_seq.nextval,#{name},#{minplayer},#{maxplayer},#{image},#{costprice},#{salesprice},#{profit},#{discount},#{playtime})
+		
+	</insert>
+	<insert id="insertDesc">
+		insert into descimg(gameseq,imgpath) values (#{gameseq},#{imgpath})
+	</insert>
+	<select id="getGameseq" resultType="_int">
+		select seq from game where name =#{name}
+	</select>
+	
+	<select id="getTagseq"  resultType="_int">
+		select tagseq from tag where tagname = #{tagname} and category = #{category}
+	</select>
+	<insert id="insertTagcon">
+		insert into gametagcon(gameseq,tagseq) values(#{gameseq},#{tagseq})
+	</insert>
+-->
+</mapper>

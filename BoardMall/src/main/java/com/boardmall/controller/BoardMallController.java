@@ -1,20 +1,34 @@
 package com.boardmall.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.boardmall.pro.dao.GameDAO;
+import com.boardmall.pro.dto.GameVO;
 
 @Controller
 public class BoardMallController {
 		
 	@RequestMapping("/main.do")
-	public String mainForm() {
+	public String mainForm(Model model) {
 		System.out.println("메인 페이지로 이동");
+		GameDAO gameDAO = new GameDAO();
+		List<GameVO> gameList = gameDAO.getMainList();
+		
+		model.addAttribute("gameList", gameList);
+		
 		return "main";
+		
 	}
 	
 	@RequestMapping("/productList.do")
 	public String productListForm() {
 		System.out.println("상품 리스트 페이지로 이동");
+		
+		
 		return "product/productList";
 	}
 	

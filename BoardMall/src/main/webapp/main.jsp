@@ -122,34 +122,37 @@
 	<div class="album py-5">
 		<h2>베스트 게임</h2>
 		<div class="row row-cols-sm-2 g-3 ">
+		
+		<c:forEach items="${gameList }" var="gameVO">
 			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
 				<div class="hovereffect border border-2" style="height: 200px;">
 					<a href="#"> <img class="img-responsive w-100 h-100"
-						src="resources/images/LOGO.png" alt="Game">
+						src="resources/${gameVO.image }" alt="Game">
 						<div class="overlay">
-							<h2 class="fw-bold">Game_Title</h2>
+							<h2 class="fw-bold">${gameVO.name }</h2>
 							<!-- <a class="info" href="#">link here</a> -->
 							<table class="w-100 h-75 text-white py-2">
 								<tr class="my-3">
 									<th class="text-start ps-3"><img
 										src="resources/images/ico_cost.png"></th>
-									<td class="text-end pe-3">Game_price 원</td>
+									<td class="text-end pe-3">${gameVO.salesprice }</td>
 								</tr>
 								<tr class="my-3">
 									<th class="text-start ps-3"><img
 										src="resources/images/best_icon01.png"></th>
-									<td class="text-end pe-3">Game_player 명</td>
+									<td class="text-end pe-3">${gameVO.minplayer }명~${gameVO.maxplayer }명</td>
 								</tr>
 								<tr class="my-3">
 									<th class="text-star ps-3"><img
 										src="resources/images/best_icon02.png"></th>
-									<td class="text-end pe-3">Game_playtime 분</td>
+									<td class="text-end pe-3">${gameVO.playtime }</td>
 								</tr>
 							</table>
 						</div>
 					</a>
 				</div>
 			</div>
+		</c:forEach>
 			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
 				<div class="hovereffect border border-2" style="height: 200px;">
 					<a href="#"> <img class="img-responsive w-100 h-100"
@@ -357,17 +360,17 @@
 	<div class="clear"></div>
 	<div class="row row-cols-sm-2 g-1 text-center mb-5">
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-			<a class="btn btn-outline-primary btn-lg fw-bold border-2 w-75" href="#">
+			<a class="btn btn-outline-primary btn-lg fw-bold border-2 w-75" href="faq.do">
 				FAQ
 			</a>
 		</div>
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-			<a class="btn btn-outline-dark btn-lg fw-bold border-2 w-75" href="#">
+			<a class="btn btn-outline-dark btn-lg fw-bold border-2 w-75" href="support.do">
 				Contact
 			</a>
 		</div>
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-			<a class="btn btn-outline-success btn-lg fw-bold border-2 w-75" href="#">
+			<a class="btn btn-outline-success btn-lg fw-bold border-2 w-75" href="notice.do">
 				Notice
 			</a>
 		</div>

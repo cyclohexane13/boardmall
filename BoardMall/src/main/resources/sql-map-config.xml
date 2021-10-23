@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties resource="config/database.properties"></properties>
+	<typeAliases>
+		<typeAlias alias="game" type="com.boardmall.pro.dto.GameVO"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property value="${jdbc.driver}" name="driver"/>
+				<property value="${jdbc.url}" name="url"/>
+				<property value="${jdbc.username}" name="username"/>
+				<property value="${jdbc.password}" name="password"/>
+				
+			</dataSource>
+		</environment>
+	
+	</environments>
+	<mappers>
+		<mapper resource="mapping/board-mapping.xml"/>
+		<mapper resource="mapping/game-mapping.xml"/>
+	</mappers>
+	
+	
+</configuration>
