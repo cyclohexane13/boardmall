@@ -62,6 +62,16 @@ em {
 	height: 215px;
 }
 
+.overlay h2{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+    height: 40px;
+    width: 100%;
+}
+
+
 #top_box, #top_box2, #top_box3 {
 	justify-content: center;
 	display: flex;

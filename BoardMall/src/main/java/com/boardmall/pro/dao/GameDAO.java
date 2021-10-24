@@ -19,4 +19,8 @@ public class GameDAO {
 		return mybatis.selectList("GameDAO.getMainList");
 	}
 	
+	public List<GameVO> getImageSliderList(){
+		return mybatis.selectList("GameDAO.getImageSliderList");
+	}
+	
 }

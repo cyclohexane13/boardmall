@@ -30,26 +30,19 @@
 		</div>
 		<!-- 내용(이미지) -->
 		<div class="carousel-inner w-75 mx-auto">
-			<div class="carousel-item active">
+			<c:forEach items="${imageSliderList }" var="imageVO" varStatus="i">
+			
+				<div class="carousel-item 
+					<c:if test="${i.first}">
+						active
+					</c:if>
+				">
 				<a href="#"> <img class="d-block w-75 mx-auto"
-					src="resources/images/LOGO.png" alt="Logo" width="70%" height="400">
+					src="resources/${imageVO.image }" alt="Game" width="70%" height="400">
 				</a>
-			</div>
-			<div class="carousel-item">
-				<a href="#"> <img class="d-block w-75 mx-auto"
-					src="resources/images/LOGO.png" alt="Logo" width="70%" height="400">
-				</a>
-			</div>
-			<div class="carousel-item">
-				<a href="#"> <img class="d-block w-75 mx-auto"
-					src="resources/images/LOGO.png" alt="Logo" width="70%" height="400">
-				</a>
-			</div>
-			<div class="carousel-item">
-				<a href="#"> <img class="d-block w-75 mx-auto"
-					src="resources/images/LOGO.png" alt="Logo" width="70%" height="400">
-				</a>
-			</div>
+				</div>
+			</c:forEach>
+			
 		</div>
 		<!-- 좌우 버튼 -->
 		<button class="carousel-control-prev" type="button"
@@ -121,7 +114,7 @@
 	<div class="clear"></div>
 	<div class="album py-5">
 		<h2>베스트 게임</h2>
-		<div class="row row-cols-sm-2 g-3 ">
+		<div class="row row-cols-sm-2 g-3 mb-5">
 		
 		<c:forEach items="${gameList }" var="gameVO">
 			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
@@ -139,12 +132,12 @@
 								</tr>
 								<tr class="my-3">
 									<th class="text-start ps-3"><img
-										src="resources/images/best_icon01.png"></th>
+										src="resources/images/best_icon01.png" width="20px"></th>
 									<td class="text-end pe-3">${gameVO.minplayer }명~${gameVO.maxplayer }명</td>
 								</tr>
 								<tr class="my-3">
 									<th class="text-star ps-3"><img
-										src="resources/images/best_icon02.png"></th>
+										src="resources/images/best_icon02.png" width="20px"></th>
 									<td class="text-end pe-3">${gameVO.playtime }</td>
 								</tr>
 							</table>
@@ -153,205 +146,7 @@
 				</div>
 			</div>
 		</c:forEach>
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-				<div class="hovereffect border border-2" style="height: 200px;">
-					<a href="#"> <img class="img-responsive w-100 h-100"
-						src="resources/images/LOGO.png" alt="Game">
-						<div class="overlay">
-							<h2 class="fw-bold">Game_Title</h2>
-							<!-- <a class="info" href="#">link here</a> -->
-							<table class="w-100 h-75 text-white py-2">
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/ico_cost.png"></th>
-									<td class="text-end pe-3">Game_price 원</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/best_icon01.png"></th>
-									<td class="text-end pe-3">Game_player 명</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-star ps-3"><img
-										src="resources/images/best_icon02.png"></th>
-									<td class="text-end pe-3">Game_playtime 분</td>
-								</tr>
-							</table>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-				<div class="hovereffect border border-2" style="height: 200px;">
-					<a href="#"> <img class="img-responsive w-100 h-100"
-						src="resources/images/LOGO.png" alt="Game">
-						<div class="overlay">
-							<h2 class="fw-bold">Game_Title</h2>
-							<!-- <a class="info" href="#">link here</a> -->
-							<table class="w-100 h-75 text-white py-2">
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/ico_cost.png"></th>
-									<td class="text-end pe-3">Game_price 원</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/best_icon01.png"></th>
-									<td class="text-end pe-3">Game_player 명</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-star ps-3"><img
-										src="resources/images/best_icon02.png"></th>
-									<td class="text-end pe-3">Game_playtime 분</td>
-								</tr>
-							</table>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-				<div class="hovereffect border border-2" style="height: 200px;">
-					<a href="#"> <img class="img-responsive w-100 h-100"
-						src="resources/images/LOGO.png" alt="Game">
-						<div class="overlay">
-							<h2 class="fw-bold">Game_Title</h2>
-							<!-- <a class="info" href="#">link here</a> -->
-							<table class="w-100 h-75 text-white py-2">
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/ico_cost.png"></th>
-									<td class="text-end pe-3">Game_price 원</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/best_icon01.png"></th>
-									<td class="text-end pe-3">Game_player 명</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-star ps-3"><img
-										src="resources/images/best_icon02.png"></th>
-									<td class="text-end pe-3">Game_playtime 분</td>
-								</tr>
-							</table>
-						</div>
-					</a>
-				</div>
-			</div>
-			<!-- 1번째 줄 end -->
-			<!-- 2번째 줄 start -->
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-				<div class="hovereffect border border-2" style="height: 200px;">
-					<a href="#"> <img class="img-responsive w-100 h-100"
-						src="resources/images/LOGO.png" alt="Game">
-						<div class="overlay">
-							<h2 class="fw-bold">Game_Title</h2>
-							<!-- <a class="info" href="#">link here</a> -->
-							<table class="w-100 h-75 text-white py-2">
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/ico_cost.png"></th>
-									<td class="text-end pe-3">Game_price 원</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/best_icon01.png"></th>
-									<td class="text-end pe-3">Game_player 명</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-star ps-3"><img
-										src="resources/images/best_icon02.png"></th>
-									<td class="text-end pe-3">Game_playtime 분</td>
-								</tr>
-							</table>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-				<div class="hovereffect border border-2" style="height: 200px;">
-					<a href="#"> <img class="img-responsive w-100 h-100"
-						src="resources/images/LOGO.png" alt="Game">
-						<div class="overlay">
-							<h2 class="fw-bold">Game_Title</h2>
-							<!-- <a class="info" href="#">link here</a> -->
-							<table class="w-100 h-75 text-white py-2">
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/ico_cost.png"></th>
-									<td class="text-end pe-3">Game_price 원</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/best_icon01.png"></th>
-									<td class="text-end pe-3">Game_player 명</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-star ps-3"><img
-										src="resources/images/best_icon02.png"></th>
-									<td class="text-end pe-3">Game_playtime 분</td>
-								</tr>
-							</table>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-				<div class="hovereffect border border-2" style="height: 200px;">
-					<a href="#"> <img class="img-responsive w-100 h-100"
-						src="resources/images/LOGO.png" alt="Game">
-						<div class="overlay">
-							<h2 class="fw-bold">Game_Title</h2>
-							<!-- <a class="info" href="#">link here</a> -->
-							<table class="w-100 h-75 text-white py-2">
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/ico_cost.png"></th>
-									<td class="text-end pe-3">Game_price 원</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/best_icon01.png"></th>
-									<td class="text-end pe-3">Game_player 명</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-star ps-3"><img
-										src="resources/images/best_icon02.png"></th>
-									<td class="text-end pe-3">Game_playtime 분</td>
-								</tr>
-							</table>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-				<div class="hovereffect border border-2" style="height: 200px;">
-					<a href="#"> <img class="img-responsive w-100 h-100"
-						src="resources/images/LOGO.png" alt="Game">
-						<div class="overlay">
-							<h2 class="fw-bold">Game_Title</h2>
-							<!-- <a class="info" href="#">link here</a> -->
-							<table class="w-100 h-75 text-white py-2">
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/ico_cost.png"></th>
-									<td class="text-end pe-3">Game_price 원</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-start ps-3"><img
-										src="resources/images/best_icon01.png"></th>
-									<td class="text-end pe-3">Game_player 명</td>
-								</tr>
-								<tr class="my-3">
-									<th class="text-star ps-3"><img
-										src="resources/images/best_icon02.png"></th>
-									<td class="text-end pe-3">Game_playtime 분</td>
-								</tr>
-							</table>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
+			
 		<!-- row row-cols-sm-2 g-3 -->
 	</div>
 	<!-- best 상품 end -->

@@ -12,7 +12,14 @@
 		where rnum>0
 	]]>
 	</select>	
-
+	<select id="getImageSliderList" resultType="game" >
+	<![CDATA[
+		select * from (
+				select * from game order by SYS.dbms_random.value
+			)
+		where rownum>0 and rownum <=4
+	]]>
+	</select>	
 <!-- 	
 	<insert id="insertGame">
 		insert into game(seq,name,minplayer,maxplayer,image,costprice,salesprice,profit,discount,playtime)

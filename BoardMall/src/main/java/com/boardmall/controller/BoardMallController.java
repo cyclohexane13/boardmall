@@ -17,9 +17,9 @@ public class BoardMallController {
 		System.out.println("메인 페이지로 이동");
 		GameDAO gameDAO = new GameDAO();
 		List<GameVO> gameList = gameDAO.getMainList();
-		
+		List<GameVO> imageSliderList = gameDAO.getImageSliderList();
 		model.addAttribute("gameList", gameList);
-		
+		model.addAttribute("imageSliderList", imageSliderList);
 		return "main";
 		
 	}
