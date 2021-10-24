@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.boardmall.pro.dao.GameDAO;
 import com.boardmall.pro.dto.GameVO;
@@ -33,8 +34,17 @@ public class BoardMallController {
 	}
 	
 	@RequestMapping("/gameDetail.do")
-	public String gameDetailForm() {
+	public String gameDetailForm(Model model, @RequestParam("seq") int seq) {
 		System.out.println("게임상세 페이지로 이동");
+		GameDAO gameDAO = new GameDAO();
+		GameVO game = gameDAO.getGameBySeq(seq);
+		List<String> gameGerne = gameDAO.getGameGerneBySeq(seq);
+		List<String> gameSystem = gameDAO.getGameSystemBySeq(seq);
+		List<String> gameDescImg = gameDAO.getGameDescImgBySeq(seq);
+		model.addAttribute("game", game);
+		model.addAttribute("gameGerne", gameGerne);
+		model.addAttribute("gameSystem", gameSystem);
+		model.addAttribute("gameDescImg",gameDescImg);
 		return "product/gameDetail";
 	}
 	

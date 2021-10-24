@@ -23,4 +23,19 @@ public class GameDAO {
 		return mybatis.selectList("GameDAO.getImageSliderList");
 	}
 	
+	public GameVO getGameBySeq(int seq){
+		return mybatis.selectOne("GameDAO.getGameBySeq", seq);
+	}
+	
+	public List<String> getGameGerneBySeq(int seq){
+		return mybatis.selectList("GameDAO.getGameGerneBySeq", seq);
+	}
+	
+	public List<String> getGameSystemBySeq(int seq){
+		return mybatis.selectList("GameDAO.getGameSystemBySeq", seq);
+	}
+	
+	public List<String> getGameDescImgBySeq(int seq){
+		return mybatis.selectList("GameDAO.getGameDescImgBySeq", seq);
+	}
 }

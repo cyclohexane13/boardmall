@@ -25,52 +25,71 @@
 			<div id="gameDetatil" class="border-top border-2 border-dark my-3">
 				<!-- 게임 정보 -->
 				<div id="gameInfo" class="px-4 pt-5">
-					<h3>게임 제목입니다</h3>
+					<h3>${game.name }</h3>
 					<div id="innerBox" class="mt-4">
 						<div id="gameThum">
-							<img src="resources/images/no_thum.jpg" width="425" height="425">
+							<img src="resources/${game.image }" width="425" height="425" alt="${game.name }">
 						</div>
 						<div id="infoBox" class="ps-3">
 							<ul style="min-height:228px;width:520px;overflow:hidden;">
 								<li>
-									<em>가격</em> 89,000원
+									<em>가격</em> <fmt:formatNumber type="number" maxFractionDigits="3" value="${game.salesprice}" /> 원
 								</li>
 								<li>
-									<em>게임인원</em> 1명~4명
+									<em>게임인원</em> ${game.minplayer }명~${game.maxplayer }명
 								</li>
 								<li>
-									<em>게임시간</em> 60분~120분
+									<em>게임시간</em> ${game.playtime }분
 								</li>
 								<li>
-									<em>장르</em> 테마 집중형 게임, 튜닝 가능 게임
+									<em>장르</em>
+									<c:choose>
+										<c:when test="${empty gameGerne}"> - </c:when>
+										<c:otherwise>
+											<c:forEach items="${gameGerne}" var="gerne" varStatus="i">
+												${gerne}<c:if test="${!i.last}">, </c:if>
+											</c:forEach>
+										</c:otherwise>	
+									</c:choose>
 								</li>
 								<li>
-									<em>시스템</em> 손에 든 카드관리, 액션 포인트, 역할 맡기, 협력
+									<em>시스템</em> 
+									<c:choose>
+										<c:when test="${empty gameSystem}"> - </c:when>
+										<c:otherwise>
+											<c:forEach items="${gameSystem }" var="system" varStatus="i">
+												${system}<c:if test="${!i.last}">, </c:if>
+											</c:forEach>
+										</c:otherwise>	
+									</c:choose>
 								</li>
 							</ul>
 						</div>
 						<!-- 찜하기, 장바구니 담기 -->
 						<div  class="ps-4 mt-4">
-							<form>
+							<form name="formAmount">
 								<table class="w-100 mb-3">
 									<tr>
 										<th style="width:25%;">수량</th>
 										<td>
-											<input type="button" name="minus_ea" value="-" onclick="javascript:this.form.buy_ea.value--;">
-											<!-- 0 아래로 내려가지 않도록.. -->
-											<input type="text" name="buy_ea" value="1" id="result" class="form_input" size="1" style="text-align:center;">
-											<input type="button" name="plus_ea" value="+" onclick="javascript:this.form.buy_ea.value++;">
+											<input type="button" value="-" onclick="del();">
+											<input type="text" name="amount" value="1" onchange="change();" class="form_input" size="1" style="text-align:center;">
+											<input type="button" value="+" onclick="add();">
 										</td>
 									</tr>
 								</table>			
-							</form>
-							<div class="multi_opt my-4 pe-2">
-								<div class="opt_total">
-									<span class="title">총금액</span>
-									<strong><span class="sell_prc_str_total" style="float:right;font-size:20px">30,000 원</span></strong>
-								</div>
-							</div>
 							
+								<div class="multi_opt my-4 pe-2">
+									<div class="opt_total">
+										<span class="title">총금액</span>
+										<strong><span class="sell_prc_str_total" style="float:right;font-size:20px">
+											<input type="hidden" name="sellPrice" value="${game.salesprice}">
+											<input type="text" name="sum" value="<fmt:formatNumber type='number' maxFractionDigits='3' value='${game.salesprice}'/>" readonly style="border:none;text-align:right;font-size:25px"> 원
+										</span></strong>
+										<!-- 총금액 fmt 적용 수정필요.. -->
+									</div>
+								</div>
+							</form>
 							<!-- 버튼 -->
 							
 							<div class="btn w-100 my-2 p-0">
@@ -93,7 +112,9 @@
 				<div class="border w-100 my-5" id="gameContent">
 					<dl>
 						<div>
-							<img src="resources/images/1632900487_AHC60_desc_780.jpg">
+							<c:forEach items="${gameDescImg }" var="descImg">
+								<img src="resources/${descImg }">
+							</c:forEach>
 						</div>
 					</dl>
 				</div>

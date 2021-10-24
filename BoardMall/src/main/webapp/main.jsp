@@ -119,7 +119,7 @@
 		<c:forEach items="${gameList }" var="gameVO">
 			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
 				<div class="hovereffect border border-2" style="height: 200px;">
-					<a href="#"> <img class="img-responsive w-100 h-100"
+					<a href="gameDetail.do?seq=${gameVO.seq }"> <img class="img-responsive w-100 h-100"
 						src="resources/${gameVO.image }" alt="Game">
 						<div class="overlay">
 							<h2 class="fw-bold">${gameVO.name }</h2>

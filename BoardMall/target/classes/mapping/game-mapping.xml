@@ -20,6 +20,26 @@
 		where rownum>0 and rownum <=4
 	]]>
 	</select>	
+	<select id="getGameBySeq" resultType="game" >
+		select * from game
+		where seq = #{seq}
+	</select>
+	<select id="getGameGerneBySeq" resultType="string" >
+		select tagname from gametag
+		where gameseq = #{seq}
+		and category = 'gerne'
+	</select>
+	<select id="getGameSystemBySeq" resultType="string" >
+		select tagname from gametag
+		where gameseq = #{seq}
+		and category = 'system'
+	</select>
+	<select id="getGameDescImgBySeq" resultType="string" >
+		select imgpath from descimg
+		where gameseq = #{seq}
+	</select>
+	
+	
 <!-- 	
 	<insert id="insertGame">
 		insert into game(seq,name,minplayer,maxplayer,image,costprice,salesprice,profit,discount,playtime)
