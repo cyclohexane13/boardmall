@@ -4,8 +4,7 @@ import java.util.Date;
 
 public class QnaVO {
 	private int seq;
-	private String title, content, reply, writer;
-	private char state;
+	private String title, content, reply, writer,state;
 	private Date indate;
 	
 	public int getSeq() {
@@ -38,10 +37,10 @@ public class QnaVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public char getState() {
+	public String getState() {
 		return state;
 	}
-	public void setState(char state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 	public Date getIndate() {

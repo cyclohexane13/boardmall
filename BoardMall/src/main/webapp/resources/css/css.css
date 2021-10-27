@@ -475,3 +475,9 @@ em {
 	-webkit-transition-delay: .2s;
 	transition-delay: .2s;
 }
+
+
+/* etc */
+#testForm input[type=radio]{
+	display: none;
+}
