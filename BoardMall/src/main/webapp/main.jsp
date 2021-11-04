@@ -37,8 +37,8 @@
 						active
 					</c:if>
 				">
-				<a href="#"> <img class="d-block w-75 mx-auto"
-					src="resources/${imageVO.image }" alt="Game" width="70%" height="400">
+				<a href="gameDetail.do?seq=${imageVO.seq }"> <img class="d-block mx-auto"
+					src="resources/${imageVO.image }" alt="Game" height="400px">
 				</a>
 				</div>
 			</c:forEach>
@@ -128,7 +128,7 @@
 								<tr class="my-3">
 									<th class="text-start ps-3"><img
 										src="resources/images/ico_cost.png"></th>
-									<td class="text-end pe-3">${gameVO.salesprice }</td>
+									<td class="text-end pe-3"><fmt:formatNumber type="number" maxFractionDigits="3" value="${gameVO.salesprice}" /> 원</td>
 								</tr>
 								<tr class="my-3">
 									<th class="text-start ps-3"><img
@@ -138,7 +138,7 @@
 								<tr class="my-3">
 									<th class="text-star ps-3"><img
 										src="resources/images/best_icon02.png" width="20px"></th>
-									<td class="text-end pe-3">${gameVO.playtime }</td>
+									<td class="text-end pe-3">${gameVO.playtime }분</td>
 								</tr>
 							</table>
 						</div>

@@ -11,7 +11,7 @@
 			<div id="top_menu">
 				<div id="top_title">Product</div>
 				<div id="top_content">
-					<div id="top_box" class="box_selected">
+					<div id="top_box" class="box_selected" onclick="location.href='productList.do'">
 						<div>
 							<img src="resources/images/dice_icon.png" width="60" height="60">
 						</div>
@@ -84,9 +84,8 @@
 										<span class="title">총금액</span>
 										<strong><span class="sell_prc_str_total" style="float:right;font-size:20px">
 											<input type="hidden" name="sellPrice" value="${game.salesprice}">
-											<input type="text" name="sum" value="<fmt:formatNumber type='number' maxFractionDigits='3' value='${game.salesprice}'/>" readonly style="border:none;text-align:right;font-size:25px"> 원
+											<input type="text" name="sum" size="7" value="${game.salesprice}" readonly style="border:none;text-align:right;font-size:25px"> 원
 										</span></strong>
-										<!-- 총금액 fmt 적용 수정필요.. -->
 									</div>
 								</div>
 							</form>

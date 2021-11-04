@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,42 +71,26 @@
 			<h3 class="text-light">게임 검색하기</h3>
 		</div>	
 		<div id="search">
-			<input type="text" placeholder="예) 루미큐브" size="40">
-			<button type="submit">
+		<form action="searchGame.do">
+			<input name="searchTitle" type="text" placeholder="예) 루미큐브" size="40">
+			<button onclick="submit">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 				</svg>
 			</button>
+			</form>
 			<p><span class="fw-bold fs-4">tip</span> 게임 이름을 검색하세요.</p>
 			
 			<!-- 게임 검색 결과가 이 영역에 뜸 -->
 			<div id="searchResult">
 				<!-- 검색결과 -->
 				<table>
-					<tr>
-						<td><img src="resources/images/LOGO.png" width="70" height="70"></td>
-						<td> <div id="gameTitle">세상에서 제일 재미있는 게임 게임이다게임이야 가나다라마바사아자착카타파하 재밌다고 사라고사사사사사아아아사ㅏ아상</div></td>
-					</tr>
-					<tr>
-						<td><img src="resources/images/LOGO.png" width="70" height="70"></td>
-						<td> 게임 이름</td>
-					</tr>
-					<tr>
-						<td><img src="resources/images/LOGO.png" width="70" height="70"></td>
-						<td> 게임 이름</td>
-					</tr>
-					<tr>
-						<td><img src="resources/images/LOGO.png" width="70" height="70"></td>
-						<td> 게임 이름</td>
-					</tr>
-					<tr>
-						<td><img src="resources/images/LOGO.png" width="70" height="70"></td>
-						<td> 게임 이름</td>
-					</tr>
-					<tr>
-						<td><img src="resources/images/LOGO.png" width="70" height="70"></td>
-						<td> 게임 이름</td>
-					</tr>
+					<c:forEach items="${gameList}" var="gameVO">
+						<tr>
+							<td><img src="resources/${gameVO.image}" width="70" height="70"></td>
+							<td><a href="#" onclick="return result('${gameVO.name}','${gameVO.image}', '${gameVO.seq}')" style="text-decoration:none; color:black;">${gameVO.name}</a></td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 		
@@ -113,5 +98,15 @@
 			<p id="footer"> Copyright © 2021 BoardMall. All Rights Reserved</p>
 		</div>
 	</div>
+
+<script>
+	function result(name , img , seq){
+		opener.document.getElementById("gamename").value = name;
+		opener.document.getElementById("gameImg").src = "resources/" + img;
+		opener.document.getElementById("gameseq").value = seq;
+		self.close();
+	}
+</script>
+
 </body>
 </html>

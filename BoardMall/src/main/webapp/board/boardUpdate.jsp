@@ -11,7 +11,7 @@
 
 			<div id="boardWrite" class="nav justify-content-center mt-5 w-100" style="display:block;">
 				<h3>게시글 작성</h3>
-				<form class="border p-5 my-5 w-75" action="insertBoard.do" method="post">
+				<form class="border p-5 my-5 w-75" action="updateBoard.do?seq=${board.seq}" method="post">
 					<table class="table project-table table-centered table-nowrap mt-4 w-100" >
 						<tr>
 							<th class="table-secondary">카테고리</th>
@@ -39,13 +39,13 @@
 						<tr>
 							<th class="table-secondary col-2">제목</th>
 							<td class="input-select col-9">
-								<input type="text" name="title" class="w-100">
+								<input type="text" name="title" class="w-100" placeholder="${board.title}">
 							</td>
 						</tr>	
 						<tr>
 							<th class="table-secondary col-2">내용</th>
 							<td class="input-select col-9">
-								<textarea class="w-100" rows="20" name="content"></textarea>
+								<textarea class="w-100" rows="20" name="content">${board.content}</textarea>
 							</td>
 						</tr>	
 					</table>	

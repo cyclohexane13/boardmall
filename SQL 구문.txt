@@ -1,0 +1,18 @@
+
+// FREEVIEW
+create or replace force view FREEVIEW
+as
+select * from board
+where category = '자유게시판'
+
+// REVIEWVIEW
+create or replace force view REVIEWVIEW
+as
+select * from board
+where category = '리뷰게시판'
+
+// QNAVIEW
+create or replace force view QNAVIEW
+as
+select * from board
+where category = '질문게시판'

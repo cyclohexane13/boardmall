@@ -6,6 +6,10 @@
 	<properties resource="config/database.properties"></properties>
 	<typeAliases>
 		<typeAlias alias="game" type="com.boardmall.pro.dto.GameVO"/>
+		<typeAlias alias="board" type="com.boardmall.pro.dto.BoardVO"/>
+		<typeAlias alias="tag" type="com.boardmall.pro.dto.TagVO"/>
+		<typeAlias alias="qna" type="com.boardmall.pro.dto.QnaVO"/>
+		<typeAlias alias="member" type="com.boardmall.pro.dto.MemberVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -24,6 +28,9 @@
 	<mappers>
 		<mapper resource="mapping/board-mapping.xml"/>
 		<mapper resource="mapping/game-mapping.xml"/>
+		<mapper resource="mapping/tag-mapping.xml"/>
+		<mapper resource="mapping/support-mapping.xml"/>
+		<mapper resource="mapping/member-mapping.xml"/>
 	</mappers>
 	
 	

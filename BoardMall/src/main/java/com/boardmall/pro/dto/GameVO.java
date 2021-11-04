@@ -2,9 +2,15 @@ package com.boardmall.pro.dto;
 
 public class GameVO {
 	private int seq, costprice, salesprice, profit, discount, stock, minplayer, maxplayer, playtime;
-	private String name, image, content;
+	private String name, image, content , searchTitle;
 	public int getSeq() {
 		return seq;
+	}
+	public String getSearchTitle() {
+		return searchTitle;
+	}
+	public void setSearchTitle(String searchTitle) {
+		this.searchTitle = searchTitle;
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;

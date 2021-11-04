@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SupportDAO">
+	
+	<select id="getQnaList" resultType="qna">
+		<![CDATA[
+			select * from qna order by seq desc
+		]]>
+	</select>
+	<insert id="insertQna" parameterType="qna">
+		<![CDATA[
+			insert into qna (seq,title,content)
+			values ((select nvl(max(seq),0)+1 from qna),#{title},#{content})
+		]]>
+	</insert>
+</mapper>

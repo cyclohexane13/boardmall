@@ -1,6 +1,8 @@
 package com.boardmall.pro.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -37,5 +39,16 @@ public class GameDAO {
 	
 	public List<String> getGameDescImgBySeq(int seq){
 		return mybatis.selectList("GameDAO.getGameDescImgBySeq", seq);
+	}
+	
+	public int getGameCount() {
+		return mybatis.selectOne("GameDAO.getGameCount");
+	}
+	
+	public List<GameVO> getGameListPaging(int cPage, int numPerPage){ 
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cPage", cPage);
+		map.put("numPerPage", numPerPage);
+		return mybatis.selectList("GameDAO.getGameListPaging", map); 
 	}
 }

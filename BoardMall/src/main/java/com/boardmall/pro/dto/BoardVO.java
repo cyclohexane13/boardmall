@@ -1,12 +1,32 @@
 package com.boardmall.pro.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class BoardVO {
-	private int seq, viewcnt, recommandcnt;
-	private String title, writer, content, category, image;
-	private Date regdate;
+	private int seq, viewcnt, recommandcnt, gameseq;
+	private String title, writer, content, category, image, searchCondition , searchKeyword;
 	
+
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	public int getGameseq() {
+		return gameseq;
+	}
+	public void setGameseq(int gameseq) {
+		this.gameseq = gameseq;
+	}
+	private Date regdate;
+
 	public int getSeq() {
 		return seq;
 	}
@@ -61,4 +81,7 @@ public class BoardVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	
+	
+	
 }

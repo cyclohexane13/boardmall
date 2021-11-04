@@ -4,7 +4,7 @@
 	<style>
 		
 	</style>
-	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+	
 	<script>
 		$(function(){
 			
@@ -32,19 +32,20 @@
 		<div id="top_menu">
             <div id="top_title">Service</div>
             <div id="top_content">
-                <div id="top_box" class="box_selected">
-                    <div>
-                        <img src="resources/images/faq_icon.png" width="60" height="60">
-                    </div>
-                    <div>FAQ</div>
-                    <div>자주 묻는 질문들을 확인해주세요.</div>
-                </div>
-                <div id="top_box2">
-                    <div>
-                        <img src="resources/images/qna_icon.png" width="60" height="60">
+                <div id="top_box">
+                	<div>
+                        <img src="resources/images/qna_icon.png" width="60" height="60" onclick="location.href='/pro/support.do?paging=0'">
                     </div>
                     <div>1:1 문의</div>
                     <div>문의사항은 이곳에 입력해주세요.</div>
+                    
+                </div>
+                <div id="top_box2" class="box_selected">
+                    <div>
+                        <img src="resources/images/faq_icon.png" width="60" height="60" onclick="location.href='/pro/faq.do'">
+                    </div>
+                    <div>FAQ</div>
+                    <div>자주 묻는 질문들을 확인해주세요.</div>
                 </div>
             </div>
         </div>

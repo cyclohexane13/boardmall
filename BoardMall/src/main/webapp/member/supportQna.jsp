@@ -1,3 +1,4 @@
+<%@page import="com.boardmall.pro.dto.QnaVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
@@ -6,7 +7,6 @@
 			display: inline;
 		}
 	</style>
-	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
 	<script>
 		$(function(){
 			var yet = $(".yet").html("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-clock-history\" viewBox=\"0 0 16 16\"><path d=\"M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z\"/><path d=\"M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z\"/><path d=\"M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z\"/></svg>");
@@ -39,19 +39,19 @@
 		<div id="top_menu">
             <div id="top_title">Service</div>
             <div id="top_content">
-                <div id="top_box" class="box_selected">
-                    <div>
-                        <img src="resources/images/faq_icon.png" width="60" height="60">
-                    </div>
-                    <div>FAQ</div>
-                    <div>자주 묻는 질문들을 확인해주세요.</div>
-                </div>
-                <div id="top_box2">
+            	<div id="top_box"  class="box_selected" onclick="location.href='/pro/support.do?paging=0'">
                     <div>
                         <img src="resources/images/qna_icon.png" width="60" height="60">
                     </div>
                     <div>1:1 문의</div>
                     <div>문의사항은 이곳에 입력해주세요.</div>
+                </div>
+                <div id="top_box2" onclick="location.href='/pro/faq.do'">
+                    <div>
+                        <img src="resources/images/faq_icon.png" width="60" height="60">
+                    </div>
+                    <div>FAQ</div>
+                    <div>자주 묻는 질문들을 확인해주세요.</div>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		        <form action="#" method="post" id="frm">
+		        <form action="submitQna.do" method="get" id="frm">
 		          <div class="mb-3">
 		            <label for="title" class="col-form-label">제목 : </label>
 		            <input type="text" class="form-control" id="title" name="title">
@@ -97,44 +97,62 @@
 			      <th scope="col" colspan="3">제목</th>
 			    </tr>
 			  </thead>
+		
 			  <tbody>
 			  	<!-- 반복문으로 modal생성/seq번호 id에 부여 -->
 			  	<!-- 마찬가지로 반복문으로 table 작성 seq로 modal 연결-->
 			  	<!-- if나 choose로 답변상태 받아서 제목굵기 yes=strong / no=일반 -->
-			    <tr data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-			      <th scope="row">1</th>
-			      <td><span class="ok"></span>완료</td>
-			      <td colspan="3"><strong>구매한 ~~~가 아직 도착하지 않았습니다.</strong></td>
+			<c:forEach var="qna" items="${qnaList }" begin="${paging*9}" end="${(paging+1)*9-1}">	  	
+			    <tr data-bs-toggle="modal" data-bs-target="#qna${qna.seq}">
+			      <th scope="row">${qna.seq}</th>
+			      <c:choose>
+			      	<c:when test="${qna.state eq 'Y' or qna.state eq 'y'}">
+			      		<td><span class="ok"></span>완료</td>
+			      		<td colspan="3"><strong>${qna.title }</strong></td>
+			      	</c:when>
+			      	<c:otherwise>
+			      		<td><span class="yet"></span>진행</td>
+			      		<td colspan="3">${qna.title }</td>
+			      	</c:otherwise>
+			      </c:choose>
 			    </tr>
-			    <tr data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
-			      <th scope="row">2</th>
-			      <td><span class="ok"></span>완료</td>
-			      <td colspan="3"><strong>~~의 환불건 추가 문의드립니다</strong></td>
-			    </tr>
-			    <tr class="disabled" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-			      <th scope="row">3</th>
-			      <td><span class="pause"></span>보류</td>
-			      <td colspan="3">~~~가 빨리 발매되면 좋겠어요!</td>
-			    </tr>
-			    <tr class="disabled" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
-			      <th scope="row">4</th>
-			      <td><span class="yet"></span>진행</td>
-			      <td colspan="3">이벤트 상품 누락</td>
-			    </tr>
-			  </tbody>
+			</c:forEach>
+			  </tbody>	
 			</table>
 			
 			<!-- Modal -->
-			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<c:forEach var="qna" items="${qnaList }">
+			<div class="modal fade" id="qna${qna.seq }" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-centered">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="staticBackdropLabel">문의하신 blah blah</h5>
+			        <h5 class="modal-title" id="staticBackdropLabel">${qna.title }</h5>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
-			      <div class="modal-body fw-bold">
-			        blah blah blah blah blah blah blah blah blah blah 
-			      </div>
+			      <c:choose>
+			      	<c:when test="${qna.state eq 'Y' or qna.state eq 'y' }">
+			      		<div class="modal-body fw-bold">
+				        <p class="text-secondary">답변</p>
+				        <hr>
+				        <div>${qna.reply }</div>
+				        <br><br>
+				        <p class="text-secondary">질문 상세</p>
+				        <hr>
+				        <div>${qna.content }</div>
+				      </div>
+			      	</c:when>
+			      	<c:otherwise>
+			      		<div class="modal-body fw-bold">
+				        <p class="text-secondary">답변</p>
+				        <hr>
+				        <div><strong>답변 대기 중</strong></div>
+				        <br><br>
+				        <p class="text-secondary">질문 상세</p>
+				        <hr>
+				        <div>${qna.content }</div>
+				      </div>
+			      	</c:otherwise>
+			      </c:choose>
 			      <div class="modal-footer">
 		        	<button type="button" class="btn btn-outline-dark" data-bs-target="#qna" data-bs-toggle="modal">추가 문의</button>
 		        	<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -142,60 +160,39 @@
 			    </div>
 			  </div>
 			</div>
-		
-		<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-dialog-centered">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="staticBackdropLabel">해당 사항 blah blah</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body fw-bold">
-		        123123 123123 123123 123123 123123 123123 123123 123123 123123 
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-outline-dark" data-bs-target="#qna" data-bs-toggle="modal">추가 문의</button>
-		        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		
-		<!-- 보류/ 진행 중인 요소 비활성화는 id를 통해서 조절 -->
-		<div class="modal fade" id="#" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="staticBackdropLabel">보류/진행중인 거</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body fw-bold">
-		        sadjflk;sdjflk;jasdlkgjlsk;dgj;lksjdglkjflks;dgj;lksdfjglk;jdfs;lg 
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-outline-dark" data-bs-target="#qna" data-bs-toggle="modal" >추가 문의</button>
-		        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		
+		</c:forEach>
 	</div>
 		
-		<nav aria-label="Page navigation example">
+		<nav aria-label="Page navigation example"> 	
 		  <ul class="pagination justify-content-center">
-		    <li class="page-item disabled">
-		      <a class="page-link">Previous</a>
-		    </li>
-		    <li class="page-item"><a class="page-link" href="#">1</a></li>
-		    <li class="page-item"><a class="page-link" href="#">2</a></li>
-		    <li class="page-item"><a class="page-link" href="#">3</a></li>
-		    <li class="page-item"><a class="page-link" href="#">5</a></li>
-		    <li class="page-item"><a class="page-link" href="#">6</a></li>
-		    <li class="page-item"><a class="page-link" href="#">7</a></li>
-		    <li class="page-item">
-		      <a class="page-link" href="#">Next</a>
-		    </li>
+		    
+		    <c:choose>
+		    	<c:when test="${paging gt 0 }">
+		    		<li class="page-item">
+				      <a class="page-link" href="support.do?paging=${paging-1 }">Previous</a>
+				    </li>
+		    	</c:when>
+		    	<c:otherwise>
+		    		<li class="page-item disabled">
+				      <a class="page-link" href="#">First Page</a>
+				    </li>
+		    	</c:otherwise>
+		    </c:choose>
+			<c:forEach var="page" begin="1" end="${maxPage }">
+		    	<li class="page-item"><a class="page-link" href="support.do?paging=${page-1 }">${page }</a></li>
+		    </c:forEach>
+		    <c:choose>
+		    	<c:when test="${paging+1 lt maxPage }">
+		    		<li class="page-item">
+				      <a class="page-link" href="support.do?paging=${paging+1 }">Next</a>
+				    </li>
+		    	</c:when>
+		    	<c:otherwise>
+		    		<li class="page-item disabled">
+				      <a class="page-link" href="#">Last Page</a>
+				    </li>
+		    	</c:otherwise>
+		    </c:choose>
 		  </ul>
 		</nav>
 	</main>

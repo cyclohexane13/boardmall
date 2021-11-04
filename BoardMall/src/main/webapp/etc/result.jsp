@@ -7,7 +7,7 @@
 	<br>
 	<div class="d-flex">
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-				<div class="hovereffect border border-2" style="height: 200px;">
+				<div class="hovereffect border border-2" style="height: 300px;">
 					<a href="gameDetail.do?seq=${game1.seq }"> <img class="img-responsive w-100 h-100"
 						src="resources/${game1.image }" alt="Game1">
 						<div class="overlay">
@@ -36,7 +36,7 @@
 				<h3>${game1.name }</h3>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-						<div class="hovereffect border border-2" style="height: 200px;">
+						<div class="hovereffect border border-2" style="height: 300px;">
 							<a href="gameDetail.do?seq=${game2.seq }"> <img class="img-responsive w-100 h-100"
 								src="resources/${game2.image }" alt="Game1">
 								<div class="overlay">

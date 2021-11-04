@@ -307,27 +307,27 @@ em {
 }
 
 #productList #gameSystem {
-	 width:950px;
+	 width:940px;
 	 padding: 10px 5px;
 }
 
 #productList #gameSystem span {
 	display: inline-block;
 }
-#productList #gameSystem span:nth-child(1) {
-	width: 174px;
+#productList #gameSearchOption #gameSystem span:nth-child(3) {
+	width: 260px;
 }
 
-#productList #gameSystem span:nth-child(2) {
-	width: 285px;
-}
-
-#productList #gameSystem span:nth-child(3) {
-	width: 226px;
-}
-
-#productList #gameSystem span:nth-child(4) {
+#productList #gameSearchOption  #gameSystem span:nth-child(4) {
 	width: 235px;
+}
+
+#productList #gameSearchOption #gameSystem span:nth-child(5) {
+	width: 210px;
+}
+
+#productList #gameSearchOption #gameSystem span:nth-child(6) {
+	width: 190px;
 	vertical-align:top;
 }
 
@@ -476,8 +476,70 @@ em {
 	transition-delay: .2s;
 }
 
-
 /* etc */
-#testForm input[type=radio]{
-	display: none;
+
+#gameTestForm .ques{
+	height: 110px;
+	font-size: 1.6em;
+}
+
+#gameTestForm input[type=radio]{
+    display: none;
+}
+#gameTestForm label{
+	border: 1px solid black;
+	padding: 7px;
+	cursor: pointer;
+	display: inline-block;
+	width: 90%;
+	margin: 0.5em;
+	border-radius: 4px;
+}
+
+#gameTestForm label:hover{
+	border: 1px solid black;
+	padding: 7px;
+	cursor: pointer;
+	display: inline-block;
+	width: 90%;
+	margin: 0.5em;
+	border-radius: 4px;
+}
+#gameTestForm input[type=radio]:checked + label{
+	background-color:#9ee7e9; 
+}
+
+
+#gameTestWrap button{
+	background: #24a159;
+	border: 3px solid #fff;
+	border-radius: 5px;
+	color: #fff;
+	display: block;
+	font-size: 1.6em;
+	font-weight: bold;
+	margin: 1em auto;
+	padding: 0.5em 1em;
+	position: relative;
+	text-transform: uppercase;
+}
+
+#progress{
+	position :relative;
+	height: 12px;
+	left:4%;
+	bottom: -30px;
+	width: 90%;
+	border: 1px solid #AAAAAA;
+	border-radius: 4px;
+}
+
+#progressIn{
+	position :relative;
+	top:1px;
+	background-color: #24a159;
+	width:2%;
+	height:8px;
+	border:1px solid transparent;
+	border-radius: 4px;
 }
