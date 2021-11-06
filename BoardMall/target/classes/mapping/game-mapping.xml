@@ -38,13 +38,116 @@
 		select imgpath from descimg
 		where gameseq = #{seq}
 	</select>
+	
 	<select id="getGameCount" resultType="int" >
 		select count(seq) from game
 	</select>
 	<select id="getGameListPaging" resultType="game">
-		select * from (select /*+index_desc(game game_index)*/
+		select * from (select 
 			ROWNUM as rnum, g.* from (
 			select * from game order by seq desc) g) 
+			where rnum between (#{cPage}-1)*#{numPerPage} + 1 and #{cPage}*#{numPerPage}
+	</select>
+	
+	<select id="getSearchCount" resultType="int" parameterType="map">
+		select count(seq) 
+		from (
+			select distinct g.*
+			from game g, gametagcon t
+			where g.seq = t.gameseq
+			<if test="playerArray != null and playerArray != ''">
+				intersect
+				select distinct g.*
+				from game g, gametagcon t
+				where g.seq = t.gameseq
+				and (
+					<foreach item="player" collection="playerArray">
+						(minplayer between ${player} or maxplayer between ${player}) or
+					</foreach>
+				1 = 2)	
+			</if>
+			<if test="playtimeArray != null and playtimeArray != ''">
+				intersect
+				select distinct g.*
+				from game g, gametagcon t
+				where g.seq = t.gameseq
+				and ( 
+					<foreach item="playtime" collection="playtimeArray">
+						(playtime between ${playtime}) or 
+					</foreach>
+				1 = 2)	
+			</if>
+			<if test="tagArray != null and tagArray != ''">
+				intersect
+				select distinct g.*
+				from game g, gametagcon t
+				where g.seq = t.gameseq
+				and t.tagseq in 
+					<foreach item="systemTag" collection="tagArray" open="(" close=")" separator=",">
+						${systemTag}
+					</foreach>
+			</if>	
+			<if test="tagArray2 != null and tagArray2 != ''">
+				intersect
+				select distinct g.*
+				from game g, gametagcon t
+				where g.seq = t.gameseq
+				and t.tagseq in 
+					<foreach item="gerneTag" collection="tagArray2" open="(" close=")" separator=",">
+						${gerneTag}
+					</foreach>
+			</if>	
+		)
+	</select>
+	<select id="getSearchGame" resultType="game" parameterType="map">
+		select * from (select 
+			ROWNUM as rnum, a.* from (
+				select distinct g.*
+				from game g, gametagcon t
+				where g.seq = t.gameseq
+				<if test="playerArray != null and playerArray != '' and !playerArray[0].equals('selectAll1')">
+					intersect
+					select distinct g.*
+					from game g, gametagcon t
+					where g.seq = t.gameseq
+					and ( 
+						<foreach item="player" collection="playerArray">
+							(minplayer between ${player} or maxplayer between ${player}) or 
+						</foreach>
+					1 = 2)	
+				</if>
+				<if test="playtimeArray != null and playtimeArray != '' and !playtimeArray[0].equals('selectAll2')">
+					intersect
+					select distinct g.*
+					from game g, gametagcon t
+					where g.seq = t.gameseq
+					and ( 
+						<foreach item="playtime" collection="playtimeArray">
+							(playtime between ${playtime}) or 
+						</foreach>
+					1 = 2)	
+				</if>
+				<if test="tagArray != null and tagArray != '' and !tagArray[0].equals('selectAll3')">
+					intersect
+					select distinct g.*
+					from game g, gametagcon t
+					where g.seq = t.gameseq
+					and t.tagseq in 
+						<foreach item="systemTag" collection="tagArray" open="(" close=")" separator=",">
+							${systemTag}
+						</foreach>
+				</if>	
+				<if test="tagArray2 != null and tagArray2 != '' and !tagArray2[0].equals('selectAll4')">
+					intersect
+					select distinct g.*
+					from game g, gametagcon t
+					where g.seq = t.gameseq
+					and t.tagseq in 
+						<foreach item="gerneTag" collection="tagArray2" open="(" close=")" separator=",">
+							${gerneTag}
+						</foreach>
+				</if>
+				order by 1 desc) a)
 			where rnum between (#{cPage}-1)*#{numPerPage} + 1 and #{cPage}*#{numPerPage}
 	</select>
 	
@@ -67,5 +170,7 @@
 	<insert id="insertTagcon">
 		insert into gametagcon(gameseq,tagseq) values(#{gameseq},#{tagseq})
 	</insert>
+	
+	
 -->
 </mapper>

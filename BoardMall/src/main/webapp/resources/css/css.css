@@ -349,7 +349,13 @@ em {
 	overflow: hidden;
 	font-weight: bold;
 }
+#productList #gameSearchOption #gameSystem span:nth-of-type(1) {
+	width: 260px;
+}
 
+#productList #gameSearchOption  #gameSystem span:nth-of-type(2) {
+	width: 235px;
+}
 /* 장원선 */
 /* 공지사항 notice */
 

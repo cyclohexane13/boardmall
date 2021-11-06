@@ -1,5 +1,6 @@
 package com.boardmall.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,11 +40,19 @@ public class BoardMallController {
 		return "main";
 		
 	}
-	
+	//@@@@@@@@@@상품 리스트@@@@@@@@@@@@
 	@RequestMapping("/productList.do")
 	public String productListForm(Model model, HttpServletRequest request) {
 		System.out.println("상품 리스트 페이지로 이동");
 		GameDAO gameDAO = new GameDAO();
+		
+		//검색조건출력
+        TagDAO tagDAO = new TagDAO();
+        List<TagVO> systemList = tagDAO.getTagByCategory("system");
+        List<TagVO> gerneList = tagDAO.getTagByCategory("gerne");
+        model.addAttribute("systemList", systemList);
+        model.addAttribute("gerneList", gerneList);
+        
 		//페이징
 		String path = "/productList.do?cPage=";
 		int cPage;
@@ -59,20 +68,91 @@ public class BoardMallController {
         }catch (NumberFormatException e) {
             numPerPage = 10;
         }
-        
-        List<GameVO> productList = gameDAO.getGameListPaging(cPage, numPerPage);
-        int productCount = gameDAO.getGameCount();
-        int totalPage = (int)Math.ceil((double)productCount/numPerPage);
+         // 검색
+        List<GameVO> gameTagList;
+        int gameTagCount;
+
+			gameTagList = gameDAO.getGameListPaging(cPage, numPerPage);
+			gameTagCount = gameDAO.getGameCount();
+
+        int totalPage = (int)Math.ceil((double)gameTagCount/numPerPage);
+        System.out.println(gameTagCount + " " + totalPage);
         Paging paging = new Paging();
-        paging.paging(request, path, productList, totalPage, cPage, numPerPage);
-        //검색조건
-        TagDAO tagDAO = new TagDAO();
-        List<TagVO> systemList = tagDAO.getTagByCategory("system");
-        List<TagVO> gerneList = tagDAO.getTagByCategory("gerne");
-        model.addAttribute("systemList", systemList);
-        model.addAttribute("gerneList", gerneList);
+        paging.paging(request, path, gameTagList, totalPage, cPage, numPerPage);
+		model.addAttribute("gameTagList", gameTagList);
+		/*
+		 * List<GameVO> productList = gameDAO.getGameListPaging(cPage, numPerPage); int
+		 * productCount = gameDAO.getGameCount(); int totalPage =
+		 * (int)Math.ceil((double)productCount/numPerPage); Paging paging = new
+		 * Paging(); paging.paging(request, path, productList, totalPage, cPage,
+		 * numPerPage);
+		 */
+        
+
 		return "product/productList";
 	}
+	
+	@RequestMapping("/test.do")
+	public String getCheckList(Model model, HttpServletRequest request) {
+		System.out.println("상품 리스트 검색결과 페이지로 이동");
+		GameDAO gameDAO = new GameDAO();
+		List<GameVO> gameTagList;
+		String path = "/productList.do?cPage="; 
+		int gameTagCount;
+		String[] playerArray = request.getParameterValues("check1");
+		if(playerArray != null && playerArray[0].equals("selectAll1")) { 
+			playerArray = null; 
+		}
+		System.out.println("1: " + Arrays.toString(playerArray));
+		
+		String[] playtimeArray = request.getParameterValues("check2");
+		if(playtimeArray != null && playtimeArray[0].equals("selectAll2")) { 
+			playtimeArray = null; 
+		}
+		System.out.println("2: " + Arrays.toString(playtimeArray));
+		
+		String[] tagArray = request.getParameterValues("check3");
+		if(tagArray != null && tagArray[0].equals("selectAll3")) {
+			tagArray = null;
+		}
+		System.out.println("3: " + Arrays.toString(tagArray));
+		
+		String[] tagArray2 = request.getParameterValues("check4");
+		if(tagArray2 != null && tagArray2[0].equals("selectAll4")) {
+			tagArray2 = null;
+		}
+		System.out.println("4: " + Arrays.toString(tagArray2));
+
+		//페이징
+		int cPage;
+		try {
+			cPage = Integer.parseInt(request.getParameter("cPage"));
+		} catch (NumberFormatException e) {
+			cPage = 1;
+		}
+
+		int numPerPage;  
+        try {
+            numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
+        }catch (NumberFormatException e) {
+            numPerPage = 10;
+        }
+        
+		if(tagArray == null && tagArray2 == null && playerArray == null && playtimeArray == null) {
+			gameTagList = gameDAO.getGameListPaging(cPage, numPerPage);
+			gameTagCount = gameDAO.getGameCount();
+		}else {
+			gameTagList = gameDAO.getSearchGame(playerArray,playtimeArray,tagArray,tagArray2,cPage,numPerPage);
+			gameTagCount = gameDAO.getSearchCount(playerArray,playtimeArray,tagArray,tagArray2);
+		}
+        int totalPage = (int)Math.ceil((double)gameTagCount/numPerPage);
+        System.out.println(gameTagCount + " " + totalPage); // 잘 되는데 이 부분이 시스템, 장르 둘 다 선택 시 0,0으로 나옴.. 왜? 덕분에 페이지를 넘길수도 없다..
+        Paging paging = new Paging();
+        paging.pagingSearch(playerArray, playtimeArray, tagArray, tagArray2, request, path, gameTagList, totalPage, cPage, numPerPage);
+		model.addAttribute("gameTagList", gameTagList);
+		return "test";
+	}
+	
 	
 	@RequestMapping("/gameDetail.do")
 	public String gameDetailForm(Model model, @RequestParam("seq") int seq) {

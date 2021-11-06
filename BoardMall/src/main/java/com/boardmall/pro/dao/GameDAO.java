@@ -51,4 +51,24 @@ public class GameDAO {
 		map.put("numPerPage", numPerPage);
 		return mybatis.selectList("GameDAO.getGameListPaging", map); 
 	}
+	
+	public int getSearchCount(String[] playerArray, String[] playtimeArray, String[] tagArray, String[] tagArray2) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("playerArray", playerArray);
+		map.put("playtimeArray", playtimeArray);
+		map.put("tagArray", tagArray);
+		map.put("tagArray2", tagArray2);
+		return mybatis.selectOne("GameDAO.getSearchCount", map);
+	}
+	
+	public List<GameVO> getSearchGame(String[] playerArray, String[] playtimeArray, String[] tagArray, String[] tagArray2, int cPage, int numPerPage){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cPage", cPage);
+		map.put("numPerPage", numPerPage);
+		map.put("playerArray", playerArray);
+		map.put("playtimeArray", playtimeArray);
+		map.put("tagArray", tagArray);
+		map.put("tagArray2", tagArray2);
+		return mybatis.selectList("GameDAO.getSearchGame", map);
+	}
 }
